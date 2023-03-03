@@ -33,13 +33,7 @@ export default function Cards() {
     },
   ]);
 
-  const [loggedIn, setLoggedIn] = useState(false);
-
   const nameadmin = "Admin";
-
-  const handleLogout = () => {
-    setLoggedIn(true);
-  };
 
   const [selectedGame, setSelectedGame] = useState(null);
 
@@ -61,13 +55,41 @@ export default function Cards() {
     setValue(event.target.value);
   };
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogout = () => {
+    // localStorage to save the state when user logged out
+    localStorage.removeItem("loggedIn");
+    setLoggedIn(true);
+  };
+
+  const setBetMin10 = (event) => {
+    setBet(10);
+    setValue(0);
+  };
+
+  const setBetMin20 = (event) => {
+    setBet(20);
+    setValue(0);
+  };
+
+  const setBetMin30 = (event) => {
+    setBet(30);
+    setValue(0);
+  };
+
+  const restBet = (event) => {
+    setBet(0);
+    setValue(0);
+  };
+
   return (
     <div>
       {loggedIn ? (
         // if false, display the log in screen
         <App />
       ) : (
-        <div className="bgcolor">
+        <div>
           <div className="text-white flex justify-center text-3xl font-bold text-gray-900 mx-auto p-5">
             <h1>
               Welcome {""}
@@ -89,7 +111,7 @@ export default function Cards() {
                   <div
                     key={game.id}
                     onClick={() => handleGameClick(game)}
-                    className="border rounded-lg group relative"
+                    className="border rounded-lg group relative bgcolor"
                   >
                     <div className="border-gray rounded-lg relative h-80 w-full overflow-hidden bg-white group-hover:opacity-60 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
                       <img
@@ -115,15 +137,40 @@ export default function Cards() {
           {selectedGame && (
             <div>
               <div class="flex justify-center">
-                <div class="betblock  max-w-sm rounded-lg p-10">
+                <div class="betblock border  max-w-sm rounded-lg p-10">
                   <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
                     {selectedGame.name}
                   </h5>
+                  <img
+                    className="relative h-30 w-full overflow-hidden bg-white group-hover:opacity-60 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1 mb-5 border"
+                    src={selectedGame.imageSrc}
+                    alt={selectedGame.imageAlt}
+                  />
                   <p class="mb-4 text-4xl font-bold text-neutral-600 dark:text-neutral-200">
                     Your bet is ${bet}
                   </p>
-                  <p className="text-center mb-4 justify-item-center text-gray-400">
-                    Enter the amount
+                  <div className="flex justify-center space-x-4 mt-5">
+                    <button
+                      className="bgcolor hover:bg-gray-900 text-white hover:btnConfirm font-bold py-2 px-2 rounded"
+                      onClick={setBetMin10}
+                    >
+                      Bet $10
+                    </button>
+                    <button
+                      className="bgcolor hover:bg-gray-900 text-white hover:btnConfirm font-bold py-2 px-2 rounded"
+                      onClick={setBetMin20}
+                    >
+                      Bet $20
+                    </button>
+                    <button
+                      className="bgcolor hover:bg-gray-900 text-white hover:btnConfirm font-bold py-2 px-2 rounded"
+                      onClick={setBetMin30}
+                    >
+                      Bet $30
+                    </button>
+                  </div>
+                  <p className="text-center mb-4 mt-5 justify-item-center text-gray-400">
+                    -- or enter the amount and then sumit--
                   </p>
                   <div>
                     <label className="justify-center mb-5 flex text-center">
@@ -135,12 +182,21 @@ export default function Cards() {
                       />
                     </label>
                   </div>
-                  <hr></hr>
                   <div className="mx-auto flex mt-4 grid justify-item-center">
                     <button
                       type="button"
-                      class="bgcolor hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
-                      onClick={() => setBet(bet - bet && setValue(0))}
+                      onClick={confirmBet}
+                      class="btnConfirm text-black hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-5"
+                    >
+                      Sumit amount
+                    </button>
+
+                    <hr></hr>
+
+                    <button
+                      type="button"
+                      class="bgcolor mt-5 hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
+                      onClick={restBet}
                     >
                       Restore your bet
                     </button>
@@ -151,13 +207,6 @@ export default function Cards() {
                       onClick={() => setSelectedGame(setBet(bet - bet))}
                     >
                       Deselect game
-                    </button>
-                    <button
-                      type="button"
-                      onClick={confirmBet}
-                      class="btnConfirm text-black hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
-                    >
-                      Confirm bet
                     </button>
                   </div>
                 </div>
