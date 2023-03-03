@@ -131,6 +131,7 @@ export default function Cards() {
                         type="text"
                         value={value}
                         onChange={handleChange}
+                        className="text-center"
                       />
                     </label>
                   </div>
