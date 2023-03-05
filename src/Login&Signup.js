@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LibGames from "./LibGames";
+import LibGames from "./Library";
 
 function Signup() {
   const [username, setUsername] = useState("");
