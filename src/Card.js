@@ -1,12 +1,12 @@
 function Card({ game }) {
   return (
-    <div className="card border-4 rounded-lg rounded mb-5">
-      <div className="relative overflow-hidden bg-white sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
+    <div className="card border-4 rounded-lg rounded mb-5 flex h-full w-full lg:h-64">
+      <div className="relative bg-black sm:h-64 lg:h-full">
         {/* Image */}
         <img
           src={game.imageSrc}
           alt={game.imageAlt}
-          className="mx-auto object-cover h-full w-full object-center group-hover:opacity-60"
+          className="object-cover h-full w-full group-hover:opacity-60"
         />
       </div>
     </div>

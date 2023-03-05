@@ -58,12 +58,12 @@ export default function Cards() {
               <p className="text-white relative w-full overflow-hidden text-gray-500 text-1xl">
                 Choose 1 of the game listed and set your bet
               </p>
-              <div className="mt-6 space-y-12 lg:grid lg:grid-cols-4 lg:gap-x-5 lg:space-y-0 ">
+              <div className="mt-6 grid md:grid-cols-4 gap-x-5 space-y-0 grid-cols-2 gap-x-6 gap-y-5 ">
                 {games.map((game) => (
                   <div
                     key={game.id}
                     onClick={() => handleGameClick(game)}
-                    className="rounded-lg rounded group relative "
+                    className="rounded-lg rounded group"
                   >
                     {/* I use here the prop "game" to call the info from Card.js */}
                     <Card game={game} />
@@ -77,12 +77,12 @@ export default function Cards() {
           {selectedGame && (
             <div>
               <div className="flex justify-center">
-                <div className="betblock border max-w-sm rounded-lg p-10">
+                <div className="betblock border max-w-sm rounded-lg p-10 border-4 rounded-lg rounded">
                   <h5 className="flex mb-4 text-xl justify-center font-bold text-neutral-800 dark:text-neutral-50">
                     {selectedGame.name}
                   </h5>
                   <img
-                    className="relative h-30 w-full overflow-hidden bg-white group-hover:opacity-60 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1 mb-5 border"
+                    className="relative border-4 rounded-lg rounded h-30 w-full overflow-hidden bg-white group-hover:opacity-60 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1 mb-5 border"
                     src={selectedGame.imageSrc}
                     alt={selectedGame.imageAlt}
                   />
@@ -152,7 +152,7 @@ export default function Cards() {
             <button
               onClick={handleLogout}
               type="button"
-              class="text-white mt-5 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-7 py-2.5 mr-1 mb-2 btnSignOut dark:focus:ring-gray-700 dark:border-gray-700"
+              class="text-white mt-5 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-bold rounded-lg text-sm px-6 py-2.5 mr-1 mb-2 btnSignOut dark:focus:ring-gray-700"
             >
               SIGN OUT
             </button>
