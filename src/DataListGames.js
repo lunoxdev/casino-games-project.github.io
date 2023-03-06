@@ -60,13 +60,15 @@ export const games = [
 ];
 
 function DataListGames() {
+  // Here im calling the name variable
+  const name = JSON.parse(localStorage.getItem("user"));
   return (
     <div className="text-white flex justify-center text-3xl font-bold text-gray-900 mx-auto p-5">
       {/* Successful login message */}
       <h1>
         Welcome {""}
         <u>
-          <strong>Admin</strong>
+          <strong>{name.name}</strong>
         </u>
         , log in success!
       </h1>

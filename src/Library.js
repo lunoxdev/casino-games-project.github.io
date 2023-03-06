@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import App from "./App";
+import LogIn from "./LogIn";
 import { games } from "./DataListGames";
 import DataListGames from "./DataListGames";
 import Card from "./Card";
@@ -46,7 +46,7 @@ export default function Cards() {
     <div>
       {loggedIn ? (
         // if true, display the App component
-        <App />
+        <LogIn />
       ) : (
         // otherwise, display the list of games
         <div>
@@ -107,7 +107,7 @@ export default function Cards() {
                     -- or enter the amount and then sumit--
                   </p>
                   <div>
-                    <label className="justify-center mb-5 flex text-center">
+                    <label className="justify-center text-black mb-5 flex text-center">
                       <input
                         type="text"
                         value={value}

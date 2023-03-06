@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginSignup from "./Login&Signup";
+import LoginSignup from "./LogIn";
 
 function App() {
   const [starter, setStarter] = useState(localStorage.getItem("loggedIn")); // localStorage to save the user session
