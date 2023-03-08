@@ -1,15 +1,16 @@
-const SuccesRegisterModal = ({ handleClose, show, children }) => {
+import React from "react";
+
+const SuccessRegisterModal = ({ handleClose, show }) => {
   const showHideClassName = show ? "block" : "hidden";
   return (
     <div className={`fixed z-10 inset-0 overflow-y-auto ${showHideClassName}`}>
       <div className="flex items-center justify-center min-h-screen">
-        <div className="btnSignOut border rounded-lg shadow-lg p-4">
-          <div className="mb-4">{children}</div>
-          <div className="text-gray-300 mb-5">
-            <p>The user has been registered successfully.</p>
-          </div>
+        <div className="p-4 bg-white rounded-lg shadow-lg">
+          <p className="text-gray-700 mb-5">
+            The user has been registered successfully.
+          </p>
           <button
-            className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            className="bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 text-white font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
             onClick={handleClose}
           >
             Close
@@ -20,4 +21,4 @@ const SuccesRegisterModal = ({ handleClose, show, children }) => {
   );
 };
 
-export default SuccesRegisterModal;
+export default SuccessRegisterModal;

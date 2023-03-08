@@ -11,27 +11,20 @@ export default function Cards() {
   const [loggedIn, setLoggedIn] = useState(false);
   const betAmounts = [10, 20, 30];
 
-  // localStorage to save the state when user logged out
   const handleLogout = () => {
     localStorage.removeItem("loggedIn");
     setLoggedIn(true);
   };
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
+  const handleChange = (event) => setValue(event.target.value);
 
   const handleGameClick = (game) => {
     setSelectedGame(game);
-    // Set bet to 0 if other game is selected
     setBet(0);
   };
 
-  const confirmBet = () => {
-    setBet(value);
-  };
+  const confirmBet = () => setBet(value);
 
-  // Change value of bet
   const setBetAmount = (minBet) => {
     setBet(minBet);
     setValue(0);
@@ -45,18 +38,15 @@ export default function Cards() {
   return (
     <div>
       {loggedIn ? (
-        // if true, display the LogIn component
         <LogIn />
       ) : (
-        // otherwise, display the list of games
         <div>
-          {/* Here i capture the data from DataListGames */}
           <DataListGames />
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl py-8 sm:py-24 lg:max-w-none lg:py-10">
               <h2 className="text-white text-2xl font-bold">LIST OF GAMES</h2>
               <p className="relative w-full overflow-hidden text-gray-500 text-1xl">
-                Choose 1 of the game listed and set your bet
+                Choose a game and set your bet.
               </p>
               <div className="mt-6 grid md:grid-cols-4 gap-x-5 space-y-0 grid-cols-2 gap-y-5 ">
                 {games.map((game) => (
@@ -65,7 +55,6 @@ export default function Cards() {
                     onClick={() => handleGameClick(game)}
                     className="rounded group"
                   >
-                    {/* I use here the prop "game" to call the info from Card.js */}
                     <Card game={game} />
                   </div>
                 ))}
@@ -73,7 +62,6 @@ export default function Cards() {
             </div>
           </div>
 
-          {/*  */}
           {selectedGame && (
             <div className="fixed inset-0 flex items-center justify-center">
               <div className="betblock rounded-lg p-7 border-4 max-w-sm">
@@ -115,27 +103,27 @@ export default function Cards() {
                   <button
                     type="button"
                     onClick={confirmBet}
-                    class="btnConfirm text-black hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-5"
+                    className="btnConfirm text-black hover:btnConfirm focus:outline-none font-medium rounded-lg text-sm px-7 py-2.5 mb-5"
                   >
-                    Sumit amount
+                    Submit Amount
                   </button>
 
-                  <hr></hr>
+                  <hr />
 
                   <button
                     type="button"
-                    class="bgcolor mt-5 hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
+                    className="bgcolor mt-5 hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
                     onClick={restBet}
                   >
-                    Restore your bet
+                    Restore Bet
                   </button>
 
                   <button
                     type="button"
-                    class="bgcolor hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-3"
-                    onClick={() => setSelectedGame(setBet(bet - bet))}
+                    className="bgcolor hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none font-medium rounded-lg text-sm px-7 py-2.5 mb-3"
+                    onClick={() => setSelectedGame(null)}
                   >
-                    Deselect game
+                    Deselect Game
                   </button>
                 </div>
               </div>
