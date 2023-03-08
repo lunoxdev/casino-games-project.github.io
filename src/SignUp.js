@@ -29,7 +29,7 @@ const SignUp = () => {
           <div className="flex justify-center items-center h-screen">
             <form
               onSubmit={handleSubmit}
-              className="btnSignOut p-10 rounded shadow-md sm:px-6 max-w-sm rounded-lg p-3 "
+              className="btnSignOut shadow-md sm:px-6 max-w-sm rounded-lg p-3 "
             >
               <label className="text-2xl text-white font-medium mb-5">
                 Username:

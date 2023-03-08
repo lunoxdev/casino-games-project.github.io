@@ -5,7 +5,7 @@ const SuccesRegisterModal = ({ handleClose, show, children }) => {
       <div className="flex items-center justify-center min-h-screen">
         <div className="btnSignOut border rounded-lg shadow-lg p-4">
           <div className="mb-4">{children}</div>
-          <div className="text-white text-gray-300 mb-5">
+          <div className="text-gray-300 mb-5">
             <p>The user has been registered successfully.</p>
           </div>
           <button

@@ -22,7 +22,7 @@ function App() {
             <div>
               <div className="flex justify-center items-center h-screen ">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-                  <h2 className="mt-6 text-white text-3xl font-extrabold text-gray-900">
+                  <h2 className="mt-6 text-white text-3xl font-extrabold">
                     Welcome to my website!
                   </h2>
                   <h3 className="mt-6  text-1xl font-extrabold text-gray-400">

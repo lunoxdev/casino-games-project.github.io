@@ -50,7 +50,7 @@ function Signup() {
               <div className="flex justify-center items-center h-screen">
                 <form
                   onSubmit={handleLogin}
-                  className="btnSignOut p-10 rounded shadow-md sm:px-6 max-w-sm rounded-lg p-3 "
+                  className="btnSignOut shadow-md sm:px-6 max-w-sm rounded-lg p-3 "
                 >
                   <label
                     htmlFor="username"

@@ -45,7 +45,7 @@ export default function Cards() {
   return (
     <div>
       {loggedIn ? (
-        // if true, display the App component
+        // if true, display the LogIn component
         <LogIn />
       ) : (
         // otherwise, display the list of games
@@ -55,15 +55,15 @@ export default function Cards() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-2xl py-8 sm:py-24 lg:max-w-none lg:py-10">
               <h2 className="text-white text-2xl font-bold">LIST OF GAMES</h2>
-              <p className="text-white relative w-full overflow-hidden text-gray-500 text-1xl">
+              <p className="relative w-full overflow-hidden text-gray-500 text-1xl">
                 Choose 1 of the game listed and set your bet
               </p>
-              <div className="mt-6 grid md:grid-cols-4 gap-x-5 space-y-0 grid-cols-2 gap-x-6 gap-y-5 ">
+              <div className="mt-6 grid md:grid-cols-4 gap-x-5 space-y-0 grid-cols-2 gap-y-5 ">
                 {games.map((game) => (
                   <div
                     key={game.id}
                     onClick={() => handleGameClick(game)}
-                    className="rounded-lg rounded group"
+                    className="rounded group"
                   >
                     {/* I use here the prop "game" to call the info from Card.js */}
                     <Card game={game} />
@@ -75,80 +75,74 @@ export default function Cards() {
 
           {/*  */}
           {selectedGame && (
-            <div>
-              <div className="flex justify-center">
-                <div className="betblock border max-w-sm rounded-lg p-10 border-4 rounded-lg rounded">
-                  <h5 className="flex mb-4 text-xl justify-center font-bold text-neutral-800 dark:text-neutral-50">
-                    {selectedGame.name}
-                  </h5>
+            <div className="fixed inset-0 flex items-center justify-center">
+              <div className="betblock rounded-lg p-7 border-4 max-w-sm">
+                <h5 className="mb-4 text-xl text-center font-bold text-neutral-800 dark:text-neutral-50">
+                  {selectedGame.name}
+                </h5>
+                <div className="flex items-center justify-center">
                   <img
-                    className="relative border-4 rounded-lg rounded h-30 w-full overflow-hidden bg-white group-hover:opacity-60 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1 mb-5 border"
+                    className="border-4 rounded h-full w-32 object-cover object-center mb-5"
                     src={selectedGame.imageSrc}
                     alt={selectedGame.imageAlt}
                   />
-                  <p className="mb-4 text-4xl font-bold text-neutral-600 dark:text-neutral-200">
-                    Your bet is ${bet}
-                  </p>
-                  <div className="flex justify-center mt-5">
-                    <div>
-                      {betAmounts.map((amount) => (
-                        // Button to bet $10, $20, $30
-                        <button
-                          key={amount}
-                          className="bgcolor hover:bg-gray-900 text-white hover:btnConfirm font-bold py-2 px-2 rounded mr-3"
-                          onClick={() => setBetAmount(amount)}
-                        >
-                          Bet ${amount}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                  <p className="text-center mb-4 mt-5 justify-item-center text-gray-400">
-                    -- or enter the amount and then sumit--
-                  </p>
-                  <div>
-                    <label className="justify-center text-black mb-5 flex text-center">
-                      <input
-                        type="text"
-                        value={value}
-                        onChange={handleChange}
-                        className="text-center"
-                      />
-                    </label>
-                  </div>
-                  <div className="mx-auto flex mt-4 grid justify-item-center">
+                </div>
+                <p className="mb-4 text-4xl font-bold text-neutral-600 dark:text-neutral-200 text-center">
+                  ${bet}
+                </p>
+                <div className="flex justify-center mb-5">
+                  {betAmounts.map((amount) => (
                     <button
-                      type="button"
-                      onClick={confirmBet}
-                      class="btnConfirm text-black hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-5"
+                      key={amount}
+                      className="bgcolor hover:bg-gray-900 text-white hover:text-white hover:btnConfirm font-bold py-2 px-2 rounded mr-3"
+                      onClick={() => setBetAmount(amount)}
                     >
-                      Sumit amount
+                      Bet ${amount}
                     </button>
+                  ))}
+                </div>
+                <div className="mb-5">
+                  <label className="justify-center text-black flex text-center">
+                    <input
+                      type="text"
+                      value={value}
+                      onChange={handleChange}
+                      className="text-center"
+                    />
+                  </label>
+                </div>
+                <div className="mx-auto mt-4 grid justify-item-center">
+                  <button
+                    type="button"
+                    onClick={confirmBet}
+                    class="btnConfirm text-black hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-5"
+                  >
+                    Sumit amount
+                  </button>
 
-                    <hr></hr>
+                  <hr></hr>
 
-                    <button
-                      type="button"
-                      class="bgcolor mt-5 hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
-                      onClick={restBet}
-                    >
-                      Restore your bet
-                    </button>
+                  <button
+                    type="button"
+                    class="bgcolor mt-5 hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-2"
+                    onClick={restBet}
+                  >
+                    Restore your bet
+                  </button>
 
-                    <button
-                      type="button"
-                      class="bgcolor hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-3"
-                      onClick={() => setSelectedGame(setBet(bet - bet))}
-                    >
-                      Deselect game
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    class="bgcolor hover:bg-gray-900 text-white hover:btnConfirm focus:outline-none  font-medium rounded-lg text-sm px-7 py-2.5 mb-3"
+                    onClick={() => setSelectedGame(setBet(bet - bet))}
+                  >
+                    Deselect game
+                  </button>
                 </div>
               </div>
             </div>
           )}
           {/* Sign Out button here */}
-          <div class="mx-auto mt-5 relative h-32 w-32">
+          <div className="mx-auto mt-5 h-32 w-32">
             <button
               onClick={handleLogout}
               type="button"
