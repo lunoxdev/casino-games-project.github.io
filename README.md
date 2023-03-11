@@ -1,6 +1,5 @@
-# Casino Game Project
-Simple casino game project with login/signup dialog using ReactJS.
+# Casino Game
 
-Live Demo here:
+Live Demo
 
-https://casino-game-project.netlify.app/
+https://casino-games-app.netlify.app/
